@@ -8,6 +8,7 @@ namespace tul{
 namespace util{
 
 std::vector<std::string> str_split(const std::string& line, const std::string& token);
+std::string str_join(const std::vector<std::string>& parts, const std::string& separator);
 std::string str_replace(const std::string& line, const std::string& from, const std::string& to);
 
 std::string str_ltrim(std::string str);

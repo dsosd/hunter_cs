@@ -19,16 +19,23 @@ std::vector<std::string> str_split(const std::string& line, const std::string& t
 	return ret;
 }
 
-std::string str_replace(const std::string& line, const std::string& from, const std::string& to){
-	std::vector<std::string> parts = str_split(line, from);
+std::string str_join(const std::vector<std::string>& parts, const std::string& separator){
 	std::stringstream ret;
+	if (!parts.size()){
+		return "";
+	}
 
 	for (std::size_t i = 0; i < parts.size()-1; ++i){
-		ret << parts[i] << to;
+		ret << parts[i] << separator;
 	}
 	ret << parts[parts.size() - 1];
 
 	return ret.str();
+}
+
+std::string str_replace(const std::string& line, const std::string& from, const std::string& to){
+	std::vector<std::string> parts = str_split(line, from);
+	return str_join(parts, to);
 }
 
 std::string str_ltrim(std::string str){
